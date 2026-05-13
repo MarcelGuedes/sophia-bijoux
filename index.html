@@ -95,6 +95,39 @@
       font-weight: bold;
     }
 
+    .galeria {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .galeria h2 {
+      color: #c084fc;
+      margin-bottom: 15px;
+    }
+
+    .fotos {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .foto {
+      width: 80px;
+      height: 80px;
+      background: #fff0f7;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      border: 2px solid #ffd1e8;
+      transition: transform 0.3s;
+    }
+
+    .foto:hover {
+      transform: scale(1.1);
+    }
+
     .footer {
       text-align: center;
       padding: 25px;
@@ -123,9 +156,19 @@
   <div id="produtos"></div>
 
   <div class="botao">
-    <button onclick="abrirWhatsApp()">
-      💬 Fazer Pedido no WhatsApp
+    <button onclick="abrirTeams()">
+      💻 Abrir Teams Sophia Bijoux
     </button>
+  </div>
+
+  <div class="galeria">
+    <h2>✨ Novidades da Sophia ✨</h2>
+
+    <div class="fotos">
+      <div class="foto">🎀</div>
+      <div class="foto">💖</div>
+      <div class="foto">🌈</div>
+    </div>
   </div>
 
   <div class="footer">
@@ -184,8 +227,8 @@
     );
   }
 
-  function abrirWhatsApp() {
-    window.open('https://wa.me/', '_blank');
+  function abrirTeams() {
+    window.open('https://teams.microsoft.com', '_blank');
   }
 
   renderizar();
