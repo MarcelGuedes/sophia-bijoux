@@ -13,6 +13,7 @@
   <title>Sophia Bijoux</title>
 
   <!-- Biblioteca para gerar imagem -->
+
   <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 
   <style>
@@ -317,8 +318,6 @@
 
 <body>
 
-  <!-- ÁREA QUE VIRARÁ IMAGEM -->
-
   <div
     class="app"
     id="listaImagem"
@@ -404,6 +403,8 @@
 
   <script>
 
+    // PRODUTOS
+
     const produtosIniciais = [
 
       {
@@ -433,14 +434,12 @@
 
     ];
 
-    // PEGA DADOS SALVOS
+    // SALVA DADOS
 
     const produtosSalvos =
       localStorage.getItem(
         'sophia-bijoux'
       );
-
-    // DEFINE PRODUTOS
 
     let produtos = produtosSalvos
       ? JSON.parse(produtosSalvos)
@@ -453,7 +452,7 @@
         'produtos'
       );
 
-    // RENDERIZA LISTA
+    // RENDERIZA
 
     function renderizar(){
 
@@ -503,7 +502,7 @@
 
     }
 
-    // ALTERA PREÇO
+    // ALTERAR PREÇO
 
     function alterarPreco(
       index,
@@ -522,7 +521,7 @@
 
     }
 
-    // ABRIR TEAMS
+    // TEAMS
 
     function abrirTeams(){
 
@@ -531,28 +530,143 @@
 
     }
 
-    // GERAR IMAGEM PNG
+    // GERAR IMAGEM PERSONALIZADA
 
     async function gerarImagem(){
 
-      const elemento =
-        document.getElementById(
-          'listaImagem'
-        );
+      // CRIA ÁREA TEMPORÁRIA
+
+      const area =
+        document.createElement('div');
+
+      area.style.width = '800px';
+
+      area.style.background = '#e5e5e5';
+
+      area.style.padding = '40px';
+
+      area.style.fontFamily =
+        '"Times New Roman", serif';
+
+      area.style.position = 'absolute';
+
+      area.style.left = '-9999px';
+
+      area.innerHTML = `
+
+        <div style="
+          text-align:center;
+          margin-bottom:70px;
+        ">
+
+          <h1 style="
+            display:inline-block;
+            border-bottom:5px solid black;
+            padding-bottom:5px;
+            font-size:48px;
+            font-weight:bold;
+          ">
+
+            ✨ SOPHIA BIJOUX ✨
+
+          </h1>
+
+        </div>
+
+        <div style="
+          font-size:42px;
+          font-weight:bold;
+          margin-bottom:40px;
+        ">
+
+          Tabela de Preços
+
+        </div>
+
+        ${produtos.map(produto => `
+
+          <div style="
+            font-size:38px;
+            margin-bottom:20px;
+          ">
+
+            ${produto.nome}
+
+            — R$ ${Number(produto.preco)
+              .toFixed(2)
+              .replace('.', ',')}
+
+          </div>
+
+        `).join('')}
+
+        <div style="
+          text-align:center;
+          margin-top:60px;
+          font-size:38px;
+          font-style:italic;
+          line-height:1.7;
+        ">
+
+          💌 Obrigado por comprar comigo!
+
+          <br>
+
+          ✨ Que Deus abençoe você sempre! ✨
+
+        </div>
+
+        <div style="
+          text-align:center;
+          margin-top:35px;
+          font-size:42px;
+        ">
+
+          😊 Sophia Bijoux
+
+        </div>
+
+        <div style="
+          text-align:center;
+          margin-top:70px;
+        ">
+
+          <img
+            src='https://i.imgur.com/JD5qM8L.png'
+            style='width:240px;'
+          >
+
+        </div>
+
+      `;
+
+      // ADICIONA NO BODY
+
+      document.body.appendChild(area);
+
+      // GERA IMAGEM
 
       const canvas =
         await html2canvas(
-          elemento,
+          area,
           {
             scale:3,
             useCORS:true
           }
         );
 
+      // REMOVE ÁREA TEMPORÁRIA
+
+      document.body.removeChild(area);
+
+      // CONVERTE PNG
+
       const imagem =
         canvas.toDataURL(
           'image/png'
         );
+
+      // DOWNLOAD
 
       const link =
         document.createElement('a');
@@ -573,4 +687,5 @@
   </script>
 
 </body>
+
 </html>
