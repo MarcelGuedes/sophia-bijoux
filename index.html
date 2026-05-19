@@ -1,343 +1,576 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
 
   <title>Sophia Bijoux</title>
 
+  <!-- Biblioteca para gerar imagem -->
   <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 
   <style>
 
-    body{
+    *{
       margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+
       font-family:Arial, sans-serif;
-      background:linear-gradient(to bottom, #ffd6ec, #f2d6ff);
+
+      background:
+      linear-gradient(
+        to bottom,
+        #ffd6ec,
+        #f2d6ff
+      );
+
       display:flex;
+
       justify-content:center;
+
       padding:20px;
+
+      min-height:100vh;
+
     }
 
     .app{
+
       width:100%;
+
       max-width:420px;
+
       background:white;
+
       border-radius:30px;
+
       overflow:hidden;
-      box-shadow:0 10px 30px rgba(0,0,0,0.2);
+
+      box-shadow:
+      0 10px 30px rgba(0,0,0,0.2);
+
     }
 
     .header{
-      background:linear-gradient(to right, #ff69b4, #c084fc);
+
+      background:
+      linear-gradient(
+        to right,
+        #ff69b4,
+        #c084fc
+      );
+
       color:white;
+
       text-align:center;
-      padding:30px 20px;
+
+      padding:35px 20px;
+
     }
 
     .header h1{
-      margin:0;
+
       font-size:38px;
+
+      margin-bottom:10px;
+
     }
 
     .header p{
-      margin-top:10px;
+
       font-size:18px;
+
     }
 
     .produto{
+
       background:#fff0f7;
+
       margin:15px;
-      padding:15px;
+
+      padding:18px;
+
       border-radius:20px;
+
       border:2px solid #ffd1e8;
+
     }
 
     .produto h2{
-      margin:0 0 10px 0;
+
       color:#555;
-      font-size:20px;
+
+      margin-bottom:12px;
+
+      font-size:22px;
+
     }
 
     .preco{
+
       display:flex;
+
       align-items:center;
+
       gap:10px;
+
     }
 
     .preco span{
+
       background:white;
-      padding:10px;
-      border-radius:10px;
+
+      padding:12px;
+
+      border-radius:12px;
+
       border:1px solid #ddd;
+
       font-weight:bold;
+
+      font-size:22px;
+
     }
 
     input{
+
       flex:1;
-      padding:12px;
-      border-radius:12px;
+
+      padding:14px;
+
+      border-radius:14px;
+
       border:2px solid #ffc0dd;
-      font-size:22px;
-      color:#ff4fa3;
+
+      font-size:24px;
+
+      color:#ff1493;
+
       font-weight:bold;
+
+      outline:none;
+
     }
 
-    .botao{
-      margin:20px;
+    .botoes{
+
+      padding:20px;
+
     }
 
     button{
+
       width:100%;
+
       border:none;
+
       color:white;
-      padding:18px;
-      font-size:20px;
+
+      padding:20px;
+
+      font-size:22px;
+
       border-radius:20px;
+
       cursor:pointer;
+
       font-weight:bold;
+
       margin-bottom:15px;
+
+      transition:0.3s;
+
     }
 
-    .teams{
+    button:hover{
+
+      transform:scale(1.03);
+
+    }
+
+    .btn-teams{
+
       background:#25d366;
+
     }
 
-    .imagem{
-      background:#ff69b4;
+    .btn-imagem{
+
+      background:#ff1493;
+
+      box-shadow:
+      0 5px 15px rgba(0,0,0,0.2);
+
     }
 
     .galeria{
+
       padding:20px;
+
       text-align:center;
+
     }
 
     .galeria h2{
+
       color:#c084fc;
-      margin-bottom:15px;
+
+      margin-bottom:20px;
+
     }
 
     .fotos{
+
       display:flex;
+
       justify-content:center;
+
       gap:15px;
+
     }
 
     .foto{
-      width:80px;
-      height:80px;
+
+      width:85px;
+
+      height:85px;
+
       background:#fff0f7;
+
       border-radius:20px;
+
       display:flex;
+
       align-items:center;
+
       justify-content:center;
+
       font-size:40px;
+
       border:2px solid #ffd1e8;
-      transition:transform 0.3s;
+
+      transition:0.3s;
+
     }
 
     .foto:hover{
+
       transform:scale(1.1);
+
     }
 
     .footer{
+
       text-align:center;
+
       padding:25px;
+
       background:#fff5fa;
+
     }
 
     .footer h3{
-      color:#ff4fa3;
-      margin-bottom:10px;
+
+      color:#ff1493;
+
+      margin-bottom:12px;
+
+      font-size:24px;
+
     }
 
     .footer p{
+
       color:#666;
+
       font-size:18px;
+
     }
 
     .assinatura{
+
       text-align:center;
-      padding-bottom:30px;
-      font-size:32px;
+
+      padding:20px 20px 35px;
+
+      font-size:30px;
+
       color:#c084fc;
+
       font-weight:bold;
+
     }
 
   </style>
+
 </head>
 
 <body>
 
-<div class="app" id="listaImagem">
+  <!-- ÁREA QUE VIRARÁ IMAGEM -->
 
-  <div class="header">
-    <h1>✨ Sophia Bijoux ✨</h1>
-    <p>Tabela de Preços</p>
-  </div>
+  <div
+    class="app"
+    id="listaImagem"
+  >
 
-  <div id="produtos"></div>
+    <div class="header">
 
-  <div class="botao">
+      <h1>
+        ✨ Sophia Bijoux ✨
+      </h1>
 
-    <button class="teams" onclick="abrirTeams()">
-      💻 Abrir Teams Sophia Bijoux
-    </button>
+      <p>
+        Tabela de Preços
+      </p>
 
-    <button class="imagem" onclick="gerarImagem()">
-      📸 Gerar Imagem da Lista
-    </button>
+    </div>
 
-  </div>
+    <!-- PRODUTOS -->
 
-  <div class="galeria">
+    <div id="produtos"></div>
 
-    <h2>✨ Novidades da Sophia ✨</h2>
+    <!-- BOTÕES -->
 
-    <div class="fotos">
-      <div class="foto">🎀</div>
-      <div class="foto">💖</div>
-      <div class="foto">🌈</div>
+    <div class="botoes">
+
+      <button
+        class="btn-teams"
+        onclick="abrirTeams()"
+      >
+        💻 Abrir Teams Sophia Bijoux
+      </button>
+
+      <button
+        class="btn-imagem"
+        onclick="gerarImagem()"
+      >
+        📸 GERAR IMAGEM DA LISTA
+      </button>
+
+    </div>
+
+    <!-- GALERIA -->
+
+    <div class="galeria">
+
+      <h2>
+        ✨ Novidades da Sophia ✨
+      </h2>
+
+      <div class="fotos">
+
+        <div class="foto">🎀</div>
+
+        <div class="foto">💖</div>
+
+        <div class="foto">🌈</div>
+
+      </div>
+
+    </div>
+
+    <!-- RODAPÉ -->
+
+    <div class="footer">
+
+      <h3>
+        💖 Obrigada pela preferência 💖
+      </h3>
+
+      <p>
+        ✨ Que Deus abençoe você sempre ✨
+      </p>
+
+    </div>
+
+    <div class="assinatura">
+
+      😊 Sophia Bijoux
+
     </div>
 
   </div>
 
-  <div class="footer">
-    <h3>💖 Obrigada pela preferência 💖</h3>
+  <script>
 
-    <p>
-      ✨ Que Deus abençoe você sempre ✨
-    </p>
-  </div>
+    const produtosIniciais = [
 
-  <div class="assinatura">
-    😊 Sophia Bijoux
-  </div>
+      {
+        nome:'💖 Pulseira Normal',
+        preco:2
+      },
 
-</div>
+      {
+        nome:'🌈 Pulseira Colorida',
+        preco:3
+      },
 
-<script>
+      {
+        nome:'✨ Pulseira Personalizada',
+        preco:4
+      },
 
-  const produtosIniciais = [
+      {
+        nome:'🎁 Pulseira com Brinde',
+        preco:5
+      },
 
-    {
-      nome:'💖 Pulseira Normal',
-      preco:2
-    },
+      {
+        nome:'💍 Anel',
+        preco:1
+      }
 
-    {
-      nome:'🌈 Pulseira Colorida',
-      preco:3
-    },
+    ];
 
-    {
-      nome:'✨ Pulseira Personalizada',
-      preco:4
-    },
+    // PEGA DADOS SALVOS
 
-    {
-      nome:'🎁 Pulseira com Brinde',
-      preco:5
-    },
+    const produtosSalvos =
+      localStorage.getItem(
+        'sophia-bijoux'
+      );
 
-    {
-      nome:'💍 Anel',
-      preco:1
-    }
+    // DEFINE PRODUTOS
 
-  ];
+    let produtos = produtosSalvos
+      ? JSON.parse(produtosSalvos)
+      : produtosIniciais;
 
-  const produtosSalvos =
-    localStorage.getItem('sophia-bijoux');
+    // CONTAINER
 
-  let produtos = produtosSalvos
-    ? JSON.parse(produtosSalvos)
-    : produtosIniciais;
+    const container =
+      document.getElementById(
+        'produtos'
+      );
 
-  const container =
-    document.getElementById('produtos');
+    // RENDERIZA LISTA
 
-  function renderizar(){
+    function renderizar(){
 
-    container.innerHTML = '';
+      container.innerHTML = '';
 
-    produtos.forEach((produto, index) => {
+      produtos.forEach(
+        (produto, index) => {
 
-      container.innerHTML += `
+        container.innerHTML += `
 
-        <div class="produto">
+          <div class="produto">
 
-          <h2>${produto.nome}</h2>
+            <h2>
+              ${produto.nome}
+            </h2>
 
-          <div class="preco">
+            <div class="preco">
 
-            <span>R$</span>
+              <span>
+                R$
+              </span>
 
-            <input
-              type="number"
-              step="0.50"
-              value="${produto.preco}"
-              onchange="alterarPreco(${index}, this.value)"
-            />
+              <input
+
+                type="number"
+
+                step="0.50"
+
+                value="${produto.preco}"
+
+                onchange="
+                  alterarPreco(
+                    ${index},
+                    this.value
+                  )
+                "
+
+              />
+
+            </div>
 
           </div>
 
-        </div>
+        `;
 
-      `;
+      });
 
-    });
+    }
 
-  }
+    // ALTERA PREÇO
 
-  function alterarPreco(index, valor){
+    function alterarPreco(
+      index,
+      valor
+    ){
 
-    produtos[index].preco = valor;
+      produtos[index].preco = valor;
 
-    localStorage.setItem(
-      'sophia-bijoux',
-      JSON.stringify(produtos)
-    );
+      localStorage.setItem(
 
-  }
+        'sophia-bijoux',
 
-  function abrirTeams(){
+        JSON.stringify(produtos)
 
-    window.location.href = 'msteams://';
+      );
 
-  }
+    }
 
-  async function gerarImagem(){
+    // ABRIR TEAMS
 
-    const elemento =
-      document.getElementById('listaImagem');
+    function abrirTeams(){
 
-    const canvas = await html2canvas(
-      elemento,
-      {
-        scale:3,
-        useCORS:true
-      }
-    );
+      window.location.href =
+        'msteams://';
 
-    const imagem =
-      canvas.toDataURL('image/png');
+    }
 
-    const link =
-      document.createElement('a');
+    // GERAR IMAGEM PNG
 
-    link.download =
-      'lista-sophia-bijoux.png';
+    async function gerarImagem(){
 
-    link.href = imagem;
+      const elemento =
+        document.getElementById(
+          'listaImagem'
+        );
 
-    link.click();
+      const canvas =
+        await html2canvas(
+          elemento,
+          {
+            scale:3,
+            useCORS:true
+          }
+        );
 
-  }
+      const imagem =
+        canvas.toDataURL(
+          'image/png'
+        );
 
-  renderizar();
+      const link =
+        document.createElement('a');
 
-</script>
+      link.download =
+        'lista-sophia-bijoux.png';
+
+      link.href = imagem;
+
+      link.click();
+
+    }
+
+    // INICIAR
+
+    renderizar();
+
+  </script>
 
 </body>
 </html>
