@@ -659,6 +659,37 @@
 
       document.body.removeChild(area);
 
+// ESPERA IMAGENS CARREGAREM
+
+const imagens =
+  area.querySelectorAll('img');
+
+await Promise.all(
+
+  [...imagens].map(img => {
+
+    return new Promise(resolve => {
+
+      if(img.complete){
+
+        resolve();
+
+      } else {
+
+        img.onload = resolve;
+
+        img.onerror = resolve;
+
+      }
+
+    });
+
+  })
+
+);
+
+
+      
       // CONVERTE PNG
 
       const imagem =
