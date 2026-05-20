@@ -24,7 +24,7 @@
 
   <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 
-  <style>
+ <style>
 
     *{
       margin:0;
@@ -34,48 +34,89 @@
 
     body{
 
-      font-family:Arial, sans-serif;
+      font-family:'Poppins', sans-serif;
 
       background:
       linear-gradient(
-        to bottom,
-        #ffd6ec,
-        #f2d6ff
+        135deg,
+        #ffd6ec 0%,
+        #f3d9ff 45%,
+        #dfe7ff 100%
       );
 
       display:flex;
 
       justify-content:center;
 
-      padding:20px;
+      padding:25px 15px;
 
       min-height:100vh;
 
+      overflow-x:hidden;
+
     }
+
+    /* APP */
 
     .app{
 
       width:100%;
 
-      max-width:420px;
+      max-width:430px;
 
-      background:white;
+      background:
+        rgba(255,255,255,0.72);
 
-      border-radius:30px;
+      backdrop-filter:
+        blur(18px);
+
+      border-radius:38px;
 
       overflow:hidden;
 
       box-shadow:
-      0 10px 30px rgba(0,0,0,0.2);
+        0 20px 45px rgba(0,0,0,0.12);
+
+      border:
+        1px solid rgba(255,255,255,0.5);
+
+      animation:
+        aparecer 0.7s ease;
 
     }
+
+    /* ANIMAÇÃO */
+
+    @keyframes aparecer{
+
+      from{
+
+        opacity:0;
+
+        transform:
+          translateY(20px);
+
+      }
+
+      to{
+
+        opacity:1;
+
+        transform:
+          translateY(0);
+
+      }
+
+    }
+
+    /* HEADER */
 
     .header{
 
       background:
       linear-gradient(
-        to right,
-        #ff69b4,
+        135deg,
+        #ff5fb2,
         #c084fc
       );
 
@@ -83,35 +124,86 @@
 
       text-align:center;
 
-      padding:35px 20px;
+      padding:60px 25px 50px;
+
+      position:relative;
+
+      overflow:hidden;
+
+    }
+
+    .header::before{
+
+      content:'';
+
+      position:absolute;
+
+      width:220px;
+
+      height:220px;
+
+      background:
+        rgba(255,255,255,0.12);
+
+      border-radius:50%;
+
+      top:-80px;
+
+      right:-80px;
 
     }
 
     .header h1{
 
-      font-size:38px;
+      font-size:44px;
 
-      margin-bottom:10px;
+      font-weight:700;
+
+      letter-spacing:1px;
+
+      margin-bottom:12px;
+
+      position:relative;
+
+      z-index:2;
 
     }
 
     .header p{
 
-      font-size:18px;
+      font-size:19px;
+
+      opacity:0.96;
+
+      position:relative;
+
+      z-index:2;
 
     }
 
+    /* PRODUTOS */
+
     .produto{
 
-      background:#fff0f7;
+      background:white;
 
-      margin:15px;
+      margin:22px;
 
-      padding:18px;
+      padding:24px;
 
-      border-radius:20px;
+      border-radius:26px;
 
-      border:2px solid #ffd1e8;
+      box-shadow:
+        0 10px 25px rgba(0,0,0,0.08);
+
+      transition:0.3s;
+
+    }
+
+    .produto:hover{
+
+      transform:
+        translateY(-4px);
 
     }
 
@@ -119,61 +211,80 @@
 
       color:#555;
 
-      margin-bottom:12px;
+      margin-bottom:18px;
 
       font-size:22px;
 
-    }
-
-    .preco{
-
-      display:flex;
-
-      align-items:center;
-
-      gap:10px;
+      font-weight:600;
 
     }
+
+    /* PREÇO */
+
+   .preco{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:12px;
+
+  width:100%;
+
+}
 
     .preco span{
 
-      background:white;
+      background:#fff4fa;
 
-      padding:12px;
+      padding:14px 18px;
 
-      border-radius:12px;
+      border-radius:16px;
 
-      border:1px solid #ddd;
-
-      font-weight:bold;
+      font-weight:700;
 
       font-size:22px;
 
-    }
-
-    input{
-
-      flex:1;
-
-      padding:14px;
-
-      border-radius:14px;
-
-      border:2px solid #ffc0dd;
-
-      font-size:24px;
-
       color:#ff1493;
 
-      font-weight:bold;
-
-      outline:none;
-
     }
+
+    /* INPUT */
+
+   input{
+
+  width:100%;
+
+  min-width:0;
+
+  flex:1;
+
+  padding:16px;
+
+  border-radius:16px;
+
+  border:none;
+
+  background:#fff7fc;
+
+  font-size:22px;
+
+  color:#ff1493;
+
+  font-weight:700;
+
+  outline:none;
+
+  box-shadow:
+    inset 0 2px 5px rgba(0,0,0,0.05);
+
+}
+
+    /* BOTÕES */
 
     .botoes{
 
-      padding:20px;
+      padding:8px 22px 25px;
 
     }
 
@@ -185,46 +296,59 @@
 
       color:white;
 
-      padding:20px;
+      padding:22px;
 
-      font-size:22px;
+      font-size:20px;
 
-      border-radius:20px;
+      border-radius:24px;
 
       cursor:pointer;
 
-      font-weight:bold;
+      font-weight:600;
 
-      margin-bottom:15px;
+      margin-bottom:18px;
 
       transition:0.3s;
+
+      box-shadow:
+        0 10px 20px rgba(0,0,0,0.15);
 
     }
 
     button:hover{
 
-      transform:scale(1.03);
+      transform:
+        translateY(-3px);
 
     }
 
     .btn-teams{
 
-      background:#25d366;
+      background:
+      linear-gradient(
+        135deg,
+        #25d366,
+        #14b85a
+      );
 
     }
 
     .btn-imagem{
 
-      background:#ff1493;
-
-      box-shadow:
-      0 5px 15px rgba(0,0,0,0.2);
+      background:
+      linear-gradient(
+        135deg,
+        #ff4fa3,
+        #ff1493
+      );
 
     }
 
+    /* GALERIA */
+
     .galeria{
 
-      padding:20px;
+      padding:10px 25px 35px;
 
       text-align:center;
 
@@ -232,9 +356,11 @@
 
     .galeria h2{
 
-      color:#c084fc;
+      color:#b56fff;
 
-      margin-bottom:20px;
+      margin-bottom:28px;
+
+      font-size:28px;
 
     }
 
@@ -244,19 +370,19 @@
 
       justify-content:center;
 
-      gap:15px;
+      gap:18px;
 
     }
 
     .foto{
 
-      width:85px;
+      width:95px;
 
-      height:85px;
+      height:95px;
 
-      background:#fff0f7;
+      background:white;
 
-      border-radius:20px;
+      border-radius:28px;
 
       display:flex;
 
@@ -264,9 +390,10 @@
 
       justify-content:center;
 
-      font-size:40px;
+      font-size:42px;
 
-      border:2px solid #ffd1e8;
+      box-shadow:
+        0 8px 18px rgba(0,0,0,0.08);
 
       transition:0.3s;
 
@@ -274,17 +401,22 @@
 
     .foto:hover{
 
-      transform:scale(1.1);
+      transform:
+        scale(1.08)
+        rotate(3deg);
 
     }
+
+    /* FOOTER */
 
     .footer{
 
       text-align:center;
 
-      padding:25px;
+      padding:30px 20px;
 
-      background:#fff5fa;
+      background:
+        rgba(255,255,255,0.35);
 
     }
 
@@ -294,7 +426,7 @@
 
       margin-bottom:12px;
 
-      font-size:24px;
+      font-size:25px;
 
     }
 
@@ -302,21 +434,44 @@
 
       color:#666;
 
-      font-size:18px;
+      font-size:17px;
 
     }
+
+    /* LOGO */
+
+    .logo-area{
+
+      text-align:center;
+
+      padding:10px 20px;
+
+    }
+
+    .logo-area img{
+
+      width:190px;
+
+      filter:
+        drop-shadow(
+          0 6px 10px rgba(0,0,0,0.15)
+        );
+
+    }
+
+    /* ASSINATURA */
 
     .assinatura{
 
       text-align:center;
 
-      padding:20px 20px 35px;
+      padding:10px 20px 40px;
 
-      font-size:30px;
+      font-size:32px;
 
       color:#c084fc;
 
-      font-weight:bold;
+      font-weight:700;
 
     }
 
